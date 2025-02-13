@@ -1,0 +1,110 @@
+import random
+
+# Assume the Groups don't work
+groupswork = False
+
+# List the name of students
+students = ["Muntag", "Ryan", "Shahood", "Marcos", "Aidan", "Chris", "Leo", "Mason", "Jaiden", "Gavin", "Nate", "Caleb", "Martins", "Andrew", "Brandon", "Dylan", "Abraham", "Jordan", "Jorge", "Kevin"]
+
+# Empty groups
+group1 = []
+group2 = []
+group3 = []
+group4 = []
+group5 = []
+group6 = []
+group7 = []
+group8 = []
+group9 = []
+group10 = []
+
+random.shuffle(students)
+
+ename1 = None
+ename2 = None
+ename3 = None
+ename4 = None
+
+groupsize = int(input("Would you like groups of 2, 3, or 4?"))
+
+exclusion1YN = input("Is there any pair of students that can't work together? Y / N ")
+
+if exclusion1YN.upper() == "Y":
+    ename1 = input("Enter the first name of the first student: ")
+    ename2 = input("Enter the first name of the second student: ")
+
+    ename1 = ename1.lower().capitalize()
+    ename2 = ename2.lower().capitalize()
+
+    exclusion2YN = input("Is there any other pair of students that can't work together? Y / N ")
+
+    if exclusion2YN.upper() == "Y":
+        ename3 = input("Enter the first name of the first student: ")
+        ename4 = input("Enter the first name of the second student: ")
+
+        ename3 = ename3.lower().capitalize()
+        ename4 = ename4.lower().capitalize()
+
+while groupswork == False:
+    # Check if exclusions are met, if not shuffle and try again
+    if (students.index(ename1) == students.index(ename2) - 1 or students.index(ename2) == students.index(ename1) - 1):
+        random.shuffle(students)
+        continue
+    if (students.index(ename3) == students.index(ename4) - 1 or students.index(ename4) == students.index(ename3) - 1):
+        random.shuffle(students)
+        continue
+
+    groupswork = True
+
+# Print groups based on groupsize provided by the user
+if groupsize == 2:
+    group1 = [students[0], students[1]]
+    group2 = [students[2], students[3]]
+    group3 = [students[4], students[5]]
+    group4 = [students[6], students[7]]
+    group5 = [students[8], students[9]]
+    group6 = [students[10], students[11]]
+    group7 = [students[12], students[13]]
+    group8 = [students[14], students[15]]
+    group9 = [students[16], students[17]]
+    group10 = [students[18], students[19]]
+    
+    print(group1)
+    print(group2)
+    print(group3)
+    print(group4)
+    print(group5)
+    print(group6)
+    print(group7)
+    print(group8)
+    print(group9)
+    print(group10)
+
+elif groupsize == 3:
+    group1 = [students[0], students[1], students[2]]
+    group2 = [students[3], students[4], students[5]]
+    group3 = [students[6], students[7], students[8]]
+    group4 = [students[9], students[10], students[11]]
+    group5 = [students[12], students[13], students[14],students[15]]
+    group6 = [students[16], students [17], students [18], students [19]]
+
+    print(group1)
+    print(group2)
+    print(group3)
+    print(group4)
+    print(group5)
+    print(group6)
+    print(group7)
+
+elif groupsize == 4:
+    group1 = [students[0], students[1], students[2], students[3]]
+    group2 = [students[4], students[5], students[6], students[7]]
+    group3 = [students[8], students[9], students[10], students[11]]
+    group4 = [students[12], students[13], students[14], students[15]]
+    group5 = [students[16], students[17], students[18], students[19]]
+
+    print(group1)
+    print(group2)
+    print(group3)
+    print(group4)
+    print(group5)
