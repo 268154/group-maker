@@ -31,6 +31,7 @@ groupsize = int(input("Would you like groups of 2, 3, or 4?"))
 
 exclusion1YN = input("Is there any pair of students that can't work together? Y / N ")
 
+# Only ask for exclusions if the user says "Y"
 if exclusion1YN.upper() == "Y":
     ename1 = input("Enter the first name of the first student: ")
     ename2 = input("Enter the first name of the second student: ")
@@ -47,16 +48,20 @@ if exclusion1YN.upper() == "Y":
         ename3 = ename3.lower().capitalize()
         ename4 = ename4.lower().capitalize()
 
-while groupswork == False:
-    # Check if exclusions are met, if not shuffle and try again
-    if (students.index(ename1) == students.index(ename2) - 1 or students.index(ename2) == students.index(ename1) - 1):
-        random.shuffle(students)
-        continue
-    if (students.index(ename3) == students.index(ename4) - 1 or students.index(ename4) == students.index(ename3) - 1):
-        random.shuffle(students)
-        continue
+groupswork = False
 
-    groupswork = True
+# Check if groups are valid based on exclusions
+while groupswork == False:
+    random.shuffle(students)  # Shuffle the list every time to ensure randomness
+
+    # Check if any excluded pairs are in adjacent positions
+    if ename1 and ename2 and (students.index(ename1) == students.index(ename2) - 1 or students.index(ename2) == students.index(ename1) - 1):
+        continue  # If excluded pair is adjacent, reshuffle
+
+    if ename3 and ename4 and (students.index(ename3) == students.index(ename4) - 1 or students.index(ename4) == students.index(ename3) - 1):
+        continue  # If excluded pair is adjacent, reshuffle
+
+    groupswork = True  # If no exclusions are violated, proceed with forming groups
 
 # Print groups based on groupsize provided by the user
 if groupsize == 2:
@@ -71,32 +76,31 @@ if groupsize == 2:
     group9 = [students[16], students[17]]
     group10 = [students[18], students[19]]
     
-    print(group1)
-    print(group2)
-    print(group3)
-    print(group4)
-    print(group5)
-    print(group6)
-    print(group7)
-    print(group8)
-    print(group9)
-    print(group10)
+    print("Group 1:", ", ".join(group1))
+    print("Group 2:", ", ".join(group2))
+    print("Group 3:", ", ".join(group3))
+    print("Group 4:", ", ".join(group4))
+    print("Group 5:", ", ".join(group5))
+    print("Group 6:", ", ".join(group6))
+    print("Group 7:", ", ".join(group7))
+    print("Group 8:", ", ".join(group8))
+    print("Group 9:", ", ".join(group9))
+    print("Group 10:", ", ".join(group10))
 
 elif groupsize == 3:
     group1 = [students[0], students[1], students[2]]
     group2 = [students[3], students[4], students[5]]
     group3 = [students[6], students[7], students[8]]
     group4 = [students[9], students[10], students[11]]
-    group5 = [students[12], students[13], students[14],students[15]]
-    group6 = [students[16], students [17], students [18], students [19]]
+    group5 = [students[12], students[13], students[14], students[15]]
+    group6 = [students[16], students[17], students[18], students[19]]
 
-    print(group1)
-    print(group2)
-    print(group3)
-    print(group4)
-    print(group5)
-    print(group6)
-    print(group7)
+    print("Group 1:", ", ".join(group1))
+    print("Group 2:", ", ".join(group2))
+    print("Group 3:", ", ".join(group3))
+    print("Group 4:", ", ".join(group4))
+    print("Group 5:", ", ".join(group5))
+    print("Group 6:", ", ".join(group6))
 
 elif groupsize == 4:
     group1 = [students[0], students[1], students[2], students[3]]
@@ -105,11 +109,11 @@ elif groupsize == 4:
     group4 = [students[12], students[13], students[14], students[15]]
     group5 = [students[16], students[17], students[18], students[19]]
 
-    print(group1)
-    print(group2)
-    print(group3)
-    print(group4)
-    print(group5)
+    print("Group 1:", ", ".join(group1))
+    print("Group 2:", ", ".join(group2))
+    print("Group 3:", ", ".join(group3))
+    print("Group 4:", ", ".join(group4))
+    print("Group 5:", ", ".join(group5))
 
 
 
