@@ -25,6 +25,8 @@ ename2 = None
 ename3 = None
 ename4 = None
 
+print(students)
+
 groupsize = int(input("Would you like groups of 2, 3, or 4?"))
 
 exclusion1YN = input("Is there any pair of students that can't work together? Y / N ")
@@ -108,3 +110,6 @@ elif groupsize == 4:
     print(group3)
     print(group4)
     print(group5)
+
+
+
